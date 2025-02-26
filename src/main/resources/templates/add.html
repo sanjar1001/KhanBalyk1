@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/addFisher">Хан Балык</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report">Отчет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="today">Сегодня</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Отключенная</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="col-12 pt-4 mt-5">
+        <form class="card px-3 py-3 mt-2" method="post" th:action="@{'/addFisher'}">
+            <h2 class="text-center mb-3">Добавить Бронирование</h2>
+
+            <!-- Уведомление об успешном сохранении -->
+            <div th:if="${successMessage}" class="alert alert-success">
+                [[${successMessage}]]
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="car_number" placeholder="Номер Машины" name="car_number" th:value="${car_number}" required>
+                <label for="car_number">Номер Машины</label>
+            </div>
+
+            <div class="d-flex align-items-center ">
+                <button type="button" class="btn btn-outline-secondary" onclick="decreaseCount('fishermanCount')">-</button>
+                <input type="number" style="width: 50px; text-align: center" class="form-control" id="fishermanCount" name="fishermanCount"  min="0" th:value="${fishermanCount ?: 0}" required >
+                <button type="button" class="btn btn-outline-secondary" onclick="increaseCount('fishermanCount')">+</button>
+            </div>
+            <label style="padding-bottom: 8px" for="fishermanCount">Рыбаки</label>
+
+            <div class="d-flex align-items-center ">
+                <button type="button" class="btn btn-outline-secondary" onclick="decreaseCount('pensioInvalidCount')">-</button>
+                <input type="number" style="width: 50px; text-align: center" class="form-control" id="pensioInvalidCount" name="pensioInvalidCount"  min="0" th:value="${pensioInvalidCount ?: 0}" required >
+                <button type="button" class="btn btn-outline-secondary" onclick="increaseCount('pensioInvalidCount')">+</button>
+            </div>
+            <label style="padding-bottom: 8px" for="pensioInvalidCount">Пенсио/Инвалиды</label>
+
+            <div class="d-flex align-items-center ">
+                <button type="button" class="btn btn-outline-secondary" onclick="decreaseCount('visitorCount')">-</button>
+                <input type="number" style="width: 50px; text-align: center" class="form-control" id="visitorCount" name="visitorCount"  min="0" th:value="${visitorCount ?: 0}" required >
+                <button type="button" class="btn btn-outline-secondary" onclick="increaseCount('visitorCount')">+</button>
+            </div>
+            <label style="padding-bottom: 8px" for="visitorCount">Отдыхающий</label>
+
+
+
+            <!--Тип дня Будний или Выходной-->
+            <div style="border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px">
+                <label class="form-label">Тип дня</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="dayType" value="Будний" th:checked="${dayType =='Будний'}" required>
+                    <label class="form-check-label">Будний</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="dayType" value="Выходной" th:checked="${dayType =='Выходной'}" required>
+                    <label class="form-check-label">Выходной</label>
+                </div>
+            </div>
+
+
+            <!--Типа рыбалки суточный или дневной-->
+            <div style="border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px">
+            <label class="form-label">Тип рыбалки ФОРЕЛЬ/ЖҰМА</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="fishingType" value="Дневной" th:checked="${fishingType =='Дневной'}" required>
+                    <label class="form-check-label">Дневной</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="fishingType" value="Суточный" th:checked="${fishingType == 'Суточный'}" required>
+                    <label class="form-check-label">Суточный</label>
+                </div>
+            </div>
+
+            <!--Типа оплаты qr или нал-->
+            <div style="border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px">
+                <label class="form-label">Тип Оплаты</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="paymentType" value="QR" th:checked="${paymentType =='QR'}" required>
+                    <label class="form-check-label">QR</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="paymentType" value="Наличка" th:checked="${paymentType == 'Наличка'}" required>
+                    <label class="form-check-label">Наличка</label>
+                </div>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="price" name="price" th:value="${price}" readonly>
+                <label for="price">Итоговая сумма</label>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit" formaction="/getPrice">Рассчитать цену</button>
+                <button class="btn btn-success" type="submit">Сохранить</button>
+            </div>
+
+
+        </form>
+
+        </div>
+
+
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script>
+    function increaseCount(inputId) {
+        const input = document.getElementById(inputId);
+        input.value = parseInt(input.value) + 1;
+    }
+
+    function decreaseCount(inputId) {
+        const input = document.getElementById(inputId);
+        if (parseInt(input.value) > 0) {
+            input.value = parseInt(input.value) - 1;
+        }
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

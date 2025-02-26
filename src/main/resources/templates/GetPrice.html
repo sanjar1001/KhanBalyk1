@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<form class="card px-3 py-3 mt-2" method="post" th:action="@{'/addFisher'}">
+
+  <h2 class="text-center mb-3">Рассчитать Стоимость</h2>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="car_number" placeholder="Номер Машины" name="car_number" required>
+    <label for="car_number">Номер Машины</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="phone_number" placeholder="Номер телефона" name="phone_number" required>
+    <label for="phone_number">Телефон</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="fishermanCount" name="fishermanCount" min="0" value="0" required>
+    <label for="fishermanCount">Количество рыбаков</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="pensioInvalidCount" name="pensioInvalidCount" min="0" value="0" required>
+    <label for="pensioInvalidCount">Количество Инвалид/пенсионеров</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="visitorCount" name="visitorCount" min="0" value="0" required>
+    <label for="visitorCount">Количество обычных посетителей</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="childrenCount" name="childrenCount" min="0" value="0" required>
+    <label for="childrenCount">Количество детей</label>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Тип дня</label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="dayType" value="Будни" required>
+      <label class="form-check-label">Будни</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="dayType" value="Выходной" required>
+      <label class="form-check-label">Выходной</label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Тип рыбалки</label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="fishingType" value="Дневной" required>
+      <label class="form-check-label">Дневной</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="fishingType" value="Суточный" required>
+      <label class="form-check-label">Суточный</label>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 col-4 mx-auto">
+    <button class="btn btn-success" type="submit">Сохранить</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+<p>Цена: <label th:text="${price}"></label></p>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+x
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+package com.example.khanbalyk.repository;
+
+import com.example.khanbalyk.entity.BookingTotal;
+import com.example.khanbalyk.entity.Price;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface BookingTotalRepository extends JpaRepository<BookingTotal, Long> {
+}
