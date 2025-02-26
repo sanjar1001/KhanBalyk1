@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная Панель Управления</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Стиль для кнопки меню */
+        .menu-toggle {
+            display: none;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 30px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Стиль для боковой панели */
+        .sidebar {
+            width: 70px; /* Ширина боковой панели */
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: -70px; /* Панель скрыта по умолчанию */
+            transition: left 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Когда панель открыта */
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Hover эффект */
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Контент */
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+            padding: 20px;
+        }
+
+        /* Стили для контента */
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Медиазапрос для мобильных устройств */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .content {
+                margin-left: 0; /* Контент не сдвигается */
+            }
+
+            .sidebar {
+                width: 250px; /* Ширина боковой панели на мобильных устройствах */
+            }
+
+            .sidebar a {
+                text-align: left;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Кнопка для открытия меню -->
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<!-- Боковая панель -->
+<div class="sidebar" id="sidebar">
+    <a href="#">Главная</a>
+    <a href="#">Профиль</a>
+    <a href="#">Настройки</a>
+    <a href="#">Сообщения</a>
+    <a href="#">Помощь</a>
+</div>
+
+<!-- Контент -->
+<div class="content">
+    <div class="card">
+        <h2>Основная информация</h2>
+        <p>Здесь будет отображаться основная информация о пользователе.</p>
+    </div>
+    <div class="card">
+        <h2>Обновления</h2>
+        <p>Последние обновления для вас.</p>
+    </div>
+    <div class="card">
+        <h2>Настройки</h2>
+        <p>Здесь можно настроить параметры аккаунта.</p>
+    </div>
+</div>
+
+<script>
+    // Функция для открытия и закрытия боковой панели
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>

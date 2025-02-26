@@ -1,0 +1,193 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Панель навигации */
+.navbar {
+    background-color: #1e1e2f;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar-icons button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navbar-icons button:hover {
+    color: #007bff;
+}
+
+/* Контейнер формы */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #333;
+}
+
+/* Группа ввода */
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+input,
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
+    background-color: #f9f9f9;
+}
+
+/* Кнопки +/- */
+.count-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.count-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    width: 45%;
+    text-align: center;
+}
+
+.count-btn:hover {
+    background-color: #0056b3;
+}
+
+input[type="number"] {
+    width: 60px;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+    cursor: default;
+}
+
+/* Кнопка добавить */
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+/* Общая цена */
+.total-price {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-icons {
+        margin-top: 10px;
+    }
+
+    .count-btn {
+        width: 45%;
+    }
+}
