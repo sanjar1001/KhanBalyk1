@@ -26,7 +26,6 @@ public class BookingService {
 
     public Booking addBooking(String car_number, String dayType, String fishingType, int fishermanCount, int pensioInvalidCount, int visitorCount, String paymentType) {
 
-
         double totalPrice = priceService.getPrice(dayType, fishingType, fishermanCount, pensioInvalidCount, visitorCount);
 
         Booking booking = new Booking();
@@ -43,7 +42,7 @@ public class BookingService {
 
     }
 
-    public BookingReport reportBooking(String startDate, String endDate, boolean includeFishermen, boolean includeVisitor, boolean includePensio_invalid) {
+    public BookingReport    reportBooking(String startDate, String endDate, boolean includeFishermen, boolean includeVisitor, boolean includePensio_invalid) {
         // Преобразуем строки в LocalDate
         LocalDate start = LocalDate.parse(startDate); // из String(int) в LocalDate
         LocalDate end = LocalDate.parse(endDate); // из String(int) в LocalDate

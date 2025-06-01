@@ -80,7 +80,7 @@ public class HomeController {
                                  Model model //Это для отправки на html
     ) {
 
-
+        System.out.println(startDate);
         BookingReport report = bookingService.reportBooking(startDate, endDate, includeFishermen, includeVisitor, includePensio_invalid);
 
 
